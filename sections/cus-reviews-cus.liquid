@@ -1,0 +1,77 @@
+{% schema %}
+{
+    "name": "Customer Reviews Section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Section Title",
+            "default": "OUR HAPPY CUSTOMERS"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "review",
+            "name": "Customer Review",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "customer_name",
+                    "label": "Customer Name",
+                    "default": "Sarah M."
+                },
+                {
+                    "type": "textarea",
+                    "id": "customer_review",
+                    "label": "Customer Review",
+                    "default": "\"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.\""
+                },
+                {
+                    "type": "image_picker",
+                    "id": "star_image",
+                    "label": "Star Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Customer Reviews",
+            "category": "Custom Sections"
+        }
+    ]
+}
+{% endschema %}
+<!-- Customer -->
+<div class="customer">
+    <div class="container">
+        <!-- top -->
+        <div class="customer-top">
+            <h1>{{ section.settings.section_title }}</h1>
+            <div class="vector">
+                <img class="vector-left" src="{{ 'arow-left.svg' | asset_url }}" alt="" width="24px" height="24px">
+                <img class="vector-right" src="{{ 'arrow-right.svg' | asset_url }}" alt="" width="24px" height="24px">
+            </div>
+        </div>
+        <!-- review -->
+        <div class="carousel customer-review" data-flickity='{ "cellAlign": "center", "contain": true, "prevNextButtons": false, "pageDots": false }'>
+            {% for block in section.blocks %}
+                <div class="carousel-cell">
+                    <div class="item">
+                        <div class="row1">
+                            {% for i in (1..5) %}
+                                <img src="{{ block.settings.star_image | img_url }}" alt="Star">
+                            {% endfor %}
+                        </div>
+                        <div class="row2">
+                            <span>{{ block.settings.customer_name }}</span><img src="./assets/imgs/green.svg" alt="">
+                        </div>
+                        <div class="row3">
+                            <span>{{ block.settings.customer_review }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

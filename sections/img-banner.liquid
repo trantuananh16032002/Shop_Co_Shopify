@@ -1,0 +1,65 @@
+{{ 'style.css' | asset_url | stylesheet_tag }}
+
+<section class="backg {% if section.settings.text_alignment == 'left' %}text-left{% else %}text-center{% endif %}" style="background-image: url({{ section.settings.background_image | img_url: 'master' }}); color: {{ section.settings.text_color }}; font-weight: {{ section.settings.fw }}">
+    {{ section.settings.custom_text }}
+</section>
+
+{% schema %}
+{
+    "name": "collection_h",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Background Image"
+        },
+        {
+            "type": "text",
+            "id": "custom_text",
+            "label": "Custom Text",
+            "default": "BACKGROUND"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#A52A2A" 
+        },
+        {
+            "type": "range",
+            "id": "fw",
+            "min": 300,
+            "max": 700,
+            "step": 100,
+            "label": "t:sections.img-banner.settings.fw.label",
+            "default": 700
+        },
+        {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text Alignment",
+            "options": [
+                { "value": "center", "label": "Center" },
+                { "value": "left", "label": "Left" }
+            ],
+            "default": "center"
+        }
+    ],
+    "presets": [
+        {
+            "name": "img-banner-cus"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "img-banner",
+            "name": "img-banner-cus",
+            "settings": [
+                
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,51 @@
+{{ 'style.css' | asset_url | stylesheet_tag }}
+<div class="container">
+    <section class="carousel" data-flickity='{ "groupCells": true, "wrapAround": true, "autoPlay": true }'>
+            {% for block in section.blocks %}
+                <div class="carousel-cell" style=
+                    "
+                    --slideshow-heigth: {{ section.settings.change_slides_height }}px;
+                
+                    ">
+                    <a href="#!"><img src="{{ block.settings.image | image_url }}" alt="" width="100%" height="100%"></a>
+                </div>
+            {% endfor %}
+    </section>
+</div>
+{% schema %}
+{
+    "name": "collection_h",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "change_slides_height",
+            "min": 100,
+            "max": 500,
+            "step": 100,
+            "unit": "px",
+            "label": "t:sections.slideshow.settings.change_slides_speed.label",
+            "default": 300
+        }
+    ],
+    "presets": [
+        {
+            "name": "collect_h"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "ta",
+            "name": "slideshowcus",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

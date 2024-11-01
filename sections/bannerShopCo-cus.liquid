@@ -1,0 +1,86 @@
+{% schema %}
+{
+    "name": "Banner Custom",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Banner Settings"
+        },
+        {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Banner Title",
+            "default": "FIND CLOTHES THAT MATCHES YOUR STYLE"
+        },
+        {
+            "type": "textarea",
+            "id": "banner_content",
+            "label": "Banner Content",
+            "default": "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style."
+        },
+        {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner Background Image"
+        },
+        
+        {
+            "type": "text",
+            "id": "brands_count",
+            "label": "Number of International Brands",
+            "default": "200+"
+        },
+        {
+            "type": "text",
+            "id": "products_count",
+            "label": "Number of High-Quality Products",
+            "default": "2,000+"
+        },
+        {
+            "type": "text",
+            "id": "customers_count",
+            "label": "Number of Happy Customers",
+            "default": "30,000+"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Banner Custom 2",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}
+
+<div class="banner" style="background-image: url('{{ section.settings.banner_image | img_url }}');">
+    <div class="container">
+        <p class="banner-title">
+            {{ section.settings.banner_title }}
+        </p>
+        <p class="banner-content">
+            {{ section.settings.banner_content }}
+        </p>
+        <a href="{{ section.settings.banner_button_link }}">
+            <button>Shop Now</button>
+        </a>
+        <div class="banner-info">
+            <div class="banner-info__item">
+                <span class="banner-info__number">{{ section.settings.brands_count }}</span>
+                <span class="banner-info__content">International Brands</span>
+            </div>
+            <div class="banner-info__line"></div>
+
+            <div class="banner-info__item">
+                <span class="banner-info__number">{{ section.settings.products_count }}</span>
+                <span class="banner-info__content">High-Quality Products</span>
+            </div>
+
+            <div class="banner-info__line"></div>
+            
+            <div class="banner-info__item">
+                <span class="banner-info__number">{{ section.settings.customers_count }}</span>
+                <span class="banner-info__content">Happy Customers</span>
+            </div>
+        </div>
+    </div>
+</div>

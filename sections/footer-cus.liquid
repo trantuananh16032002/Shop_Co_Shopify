@@ -1,0 +1,85 @@
+<!-- footer -->
+<div class="footer-cus">
+    <!-- footer-sub -->
+    {% comment %} <div class="container">
+        <div class="footer-sub">
+            <div class="footer-sub-box">
+                <h1 class="footer-sub-box_content">STAY UP TO DATE ABOUT OUR LATEST OFFERS</h1>
+                <div class="footer-sub-box_input">
+                    <img src="{{ 'letter.svg' | asset_url }}" alt="" width="100%" height="auto">
+                    <img src="{{ 'sub-letter.svg' | asset_url }}" alt="" width="100%" height="auto">
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+    
+    <!-- footer-main -->
+    <div class="footer-main">
+        <div class="container footer-main-list">
+            {% for block in section.blocks %}
+            <div class="footer-main-item">
+                <a href="{{ block.settings.link }}">
+                    <img class="footer-main-item_title" src="{{ block.settings.image | asset_url }}" alt="" width="100%" height="auto">
+                </a>
+                <div class="footer-main-item_content">
+                    <p>We have clothes that suit your style and which you’re proud to wear. From women to men.</p>
+                    <div class="footer-main-item_content_img">
+                        <!-- Chỗ này sẽ sử dụng các liên kết từ block -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- line -->
+    <div class="container">
+        <div class="line"></div>
+    </div>
+    
+    <!-- footer-pay -->
+    <div class="footer-pay">
+        <div class="container">
+            <p>Shop.co © 2000-2023, All Rights Reserved</p>
+            <div class="footer-pay-img">
+                {% for block in section.blocks %}
+                    <a href="{{ block.settings.link }}">
+                        <img src="{{ block.settings.image | asset_url }}" alt="" width="100%" height="auto">
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "Custom Footer",
+    "tag": "section",
+    "class": "section",
+    "settings": [],
+    "presets": [
+        {
+            "name": "Footer-custom"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "social_link",
+            "name": "Social Media Link",
+            "settings": [
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "Link"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "max_blocks": 5
+}
+{% endschema %}

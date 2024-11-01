@@ -1,0 +1,30 @@
+{{ 'style.css' | asset_url | stylesheet_tag }}
+
+<section class="backg {% if section.settings.text_alignment == 'left' %}text-left{% else %}text-center{% endif %}" style="background-image: url({{ section.settings.background_image | img_url: 'master' }}); color: {{ section.settings.text_color }}; font-weight: {{ section.settings.fw }}">
+    {{ section.settings.custom_text }}
+</section>
+
+{% schema %}
+{
+    "name": "img-banner-cus111",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        
+    ],
+    "presets": [
+        {
+            "name": "img-banner-cus111"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "img-banner-cus111",
+            "name": "img-banner-cus111",
+            "settings": [
+                
+            ]
+        }
+    ]
+}
+{% endschema %}

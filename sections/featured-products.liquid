@@ -1,0 +1,43 @@
+<div class="container featured-products-box">
+  <h2>Sản phẩm nổi bật</h2>
+  <div class="featured-products">
+    {% for block in section.blocks %}
+      <div class="product-item">
+        <h3>{{ block.settings.product.title }}</h3>
+        <a href="{{ block.settings.product.url }}">
+          <img src="{{ block.settings.product.featured_image | img_url: 'medium' }}" alt="{{ block.settings.product.title }}" width="100%" height="auto">
+        </a>
+        <p>Giá: {{ block.settings.product.price | money }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+    "name": "product featured",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+  
+    ],
+    "presets": [
+        {
+            "name": "product featured"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product",
+            "name": "product featured",
+            "settings": [
+              {
+                "type": "product",
+                "id": "product",
+                "label": "Chọn sản phẩm"
+              }
+            ]
+        }
+    ]
+}
+{% endschema %}
+  

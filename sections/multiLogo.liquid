@@ -1,0 +1,40 @@
+{% schema %}
+{
+    "name": "Brands Section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Brands Settings"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "brand_image",
+            "name": "Brand Image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Brand Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Brands Section",
+            "category": "Custom Sections"
+        }
+    ]
+}
+{% endschema %}
+
+<div class="brands">
+    <div class="container">
+        {% for block in section.blocks %}
+            {% if block.settings.image != blank %}
+                <img src="{{ block.settings.image | img_url }}" alt="Brand Logo" width="194px" height="32px" />
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

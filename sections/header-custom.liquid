@@ -1,0 +1,75 @@
+{% comment %} {{ 'style.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Navbar Items"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "navbar_item",
+      "name": "Navbar Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header-custom",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="header">
+    <div class="container">
+        <div class="header-content">
+            <!-- logo -->
+            <img src="{{ 'logo.svg' | asset_url }}" alt="Logo" width="160px" height="22px">
+
+            <!-- navbar -->
+            <div class="navbar">
+                <ul class="navbar-list">
+                    {% for block in section.blocks %}
+                        <li class="navbar-item">
+                            <a href="{{ block.settings.link }}">{{ block.settings.title }}</a>
+                            {% if forloop.first %}
+                                <img src="{{ 'arrow-down.svg' | asset_url }}" alt="Arrow Down" class="arrow-down" width="16px" height="16px">
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <!-- search -->
+            <div class="search">
+                <img src="{{ 'search.svg' | asset_url }}" alt="Search Icon" class="search-icon" width="24px" height="24px">
+                <input type="text" placeholder="Search for products" name="q" value="{{ search.terms }}">
+            </div>
+
+            <!-- action icons -->
+            <div class="action">
+                <a href="{{ routes.cart_url }}">
+                    <img src="{{ 'shop.svg' | asset_url }}" alt="Shop" class="action-shop" width="24px" height="24px">
+                </a>
+                <a href="{{ customer.account_login_url }}">
+                    <img src="{{ 'user.svg' | asset_url }}" alt="User" class="action-user" width="24px" height="24px">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
