@@ -1,0 +1,117 @@
+{% schema %}
+{
+    "name": "Footer Section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Footer Settings"
+        },
+        {
+            "type": "text",
+            "id": "newsletter_text",
+            "label": "Newsletter Text",
+            "default": "STAY UPTO DATE ABOUT OUR LATEST OFFERS"
+        },
+        {
+            "type": "text",
+            "id": "company_name",
+            "label": "Company Name",
+            "default": "Shop.co"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Footer Custom Next",
+            "category": "Custom Sections"
+        }
+    ]
+}
+{% endschema %}
+
+<div class="footer">
+    <div class="container">
+        <div class="footer-sub">
+            <div class="footer-sub-box">
+                <h1 class="footer-sub-box_content">{{ section.settings.newsletter_text }}</h1>
+                <div class="footer-sub-box_input">
+                    <img src="{{ 'letter.svg' | asset_url }}" alt="">
+                    <img src="{{ 'sub-letter.svg' | asset_url }}" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-main">
+            <div class="container footer-main-list">
+                <div class="footer-main-item">
+                    <img class="footer-main-item_title" src="{{ 'logo.svg' | asset_url }}" alt="">
+                    <div class="footer-main-item_content">
+                        <p>We have clothes that suits your style and which you’re proud to wear. From women to men.</p>
+                        <div class="footer-main-item_content_img">
+                            {% comment %} <img src="{{ 'soc1.svg' | asset_url }}" alt="">
+                            <img src="{{ 'soc2.svg' | asset_url }}" alt="">
+                            <img src="{{ 'soc3.svg' | asset_url }}" alt="">
+                            <img src="{{ 'soc4.svg' | asset_url }}" alt=""> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-main-item">
+                    <p class="footer-main-item_title">Company</p>
+                    <div class="footer-main-item_content">
+                        <p>About</p>
+                        <p>Features</p>
+                        <p>Works</p>
+                        <p>Career</p>
+                    </div>
+                </div>
+
+                <div class="footer-main-item">
+                    <p class="footer-main-item_title">Help</p>
+                    <div class="footer-main-item_content">
+                        <p>Customer Support</p>
+                        <p>Delivery Details</p>
+                        <p>Terms & Conditions</p>
+                        <p>Privacy Policy</p>
+                    </div>
+                </div>
+
+                <div class="footer-main-item">
+                    <p class="footer-main-item_title">FAQ</p>
+                    <div class="footer-main-item_content">
+                        <p>Account</p>
+                        <p>Manage Deliveries</p>
+                        <p>Orders</p>
+                        <p>Payments</p>
+                    </div>
+                </div>
+
+                <div class="footer-main-item">
+                    <p class="footer-main-item_title">Resources</p>
+                    <div class="footer-main-item_content">
+                        <p>Free eBooks</p>
+                        <p>Development Tutorial</p>
+                        <p>How to - Blog</p>
+                        <p>Youtube Playlist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} <div class="container">
+            <div class="line"></div>
+        </div>
+
+        <div class="footer-pay">
+            <div class="container">
+                <p>{{ section.settings.company_name }} © 2000-2023, All Rights Reserved</p>
+                <div class="footer-pay-img">
+                    <img src="{{ 'visa.svg' | asset_url }}" alt="">
+                    <img src="{{ 'visa2.svg' | asset_url }}" alt="">
+                    <img src="{{ 'visa3.svg' | asset_url }}" alt="">
+                    <img src="{{ 'visa4.svg' | asset_url }}" alt="">
+                    <img src="{{ 'visa5.svg' | asset_url }}" alt="">
+                </div>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
